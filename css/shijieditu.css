@@ -1,0 +1,54 @@
+/*简单reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    font: 12px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+}
+@media (min-width: 540px) {
+    body {
+        font: 13px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+    }
+}
+@media (min-width: 768px) {
+    body {
+        font: 15px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+    }
+}
+@media (min-width: 992px) {
+    body {
+    font: 24px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+    }
+}
+@media (min-width: 1200px) {
+    body {
+    font: 40px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+    }
+}
+@font-face{
+    font-family: tittleß;
+    src:url('/font/经典毛笔字体.ttf');
+}
+/*必须，关系到单个page能否全屏显示*/
+#container,
+.sections,
+.section {
+    /*必须，兼容，在浏览器不支持transform属性时，通过改变top/left完成滑动动画*/
+    position: relative;
+    /*必须，关系到单个page能否全屏显示*/
+    height: 100%;
+}
+
+
+.section{
+    /*有背景图时必须，关系到背景图能够全屏显示*/
+    background-image: url(../img/bg.png);
+    background-position: 50% 50%;
+    z-index: -999;
+}
+

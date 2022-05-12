@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+    <html>
+      <head>
+          <meta charset="utf-8" />
+          <title>世界各国食物不足发生因素</title>
+          <!-- 引入刚刚下载的 ECharts 文件 -->
+          <script src="../js/echarts.js"></script>
+          <style>
+              body{
+                  background-image: url(../img/bg.png);
+              }
+              .left:hover{
+              cursor: pointer;
+              filter: brightness(50%);
+              }
+              .right:hover{
+                  cursor: pointer;
+                  filter: brightness(50%);
+              }
+              
+          </style>
+        </head>
+    <body>
+      <div class="zong" style="width: 1200px;margin: 0 auto;">
+        <div class="tittle"><h1 style="text-align: center;color: white;">低收入和中等收入国家食物不足发生因素</h1></div>
+        <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+        <div id="main" style="width: 800px;height:400px;float: left;"></div>
+        <div class="beizhu" style="width: 380px;float: right;border:solid 1px white;border-radius: 15px;background-color: rgba(185, 178, 178, 0.336);margin-top: 30px;"><p style="color: white;line-height: 25px;">资料来源：<br>食物不足发生率来自联合国粮农组织；<br>有关各种因素（冲突、极端气候和经济衰退）相关数据来源参见《全球粮食安全和营养状况》图 17；<br>气候相关灾害（极端
+          温度、洪水、风暴）数据来自灾害流行病学研究中心。2021。EM-DAT：国际灾害数据库。参见：EM-DAT[ 网上 ]。布鲁塞尔。[2021 年 6 月 10 日引
+          述 ]。public.emdat.be；<br>冲突作为导致面临粮食危机国家的出现急性粮食不安全的首要因素相关内容来自粮食安全信息网络和全球应对粮食
+          危机网络。2021。《2021 年全球粮食危机报告》。罗马。
+          050521 medpdf）.</p></div>
+          <civ class="wenzi" style="float: left;width: 1200px;margin-top: 50px;"><p style="margin: 0 auto;color: white;line-height: 25px;font-size: 20px;text-align: center;">
+            低收入和中等收入国家食物不足往往与经济衰退和气候相关灾害相伴发生</p></civ>
+            <div style="width: 3%;position: fixed;top: 40%;left: 0;"><a href="./1世界地图.html"><img src="../img/left.png" class="left" style="width: 100%;"></a></div>
+            <div style="width: 3%;position: fixed;top: 40%;right: 0;"><a href="./4进出口.html"><img src="../img/right.png" class="right" style="width: 100%;"></a></div>
+      </div>
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'));
+            // 指定图表的配置项和数据
+            	//用到的数据
+//const color = ['#E27471', '#00C8FF', '#E6AF15', '#00E3F3', '#CF83F4', '#6B81E1', '#00FBAE']
+//
+option = {
+  tooltip: {
+    show: true, // 默认显示
+    showContent: true, // 是否显示提示框浮层
+    trigger: "item", // 触发类型，默认数据项触发
+    triggerOn: "mousemove", // 提示触发条件，mousemove鼠标移至触发，还有click点击触发
+    alwaysShowContent: false, // 默认离开提示框区域隐藏，true为一直显示
+    showDelay: 100, // 浮层显示的延迟，单位为 ms，默认没有延迟，也不建议设置。在 triggerOn 为 'mousemove' 时有效。
+    hideDelay: 2000, // 浮层隐藏的延迟，单位为 ms，在 alwaysShowContent 为 true 的时候无效。
+    enterable: false, // 鼠标是否可进入提示框浮层中，默认为false，如需详情内交互，如添加链接，按钮，可设置为 true。
+    position: "right", // 提示框浮层的位置，默认不设置时位置会跟随鼠标的位置。只在 trigger 为'item'的时候有效。
+    confine: true, // 是否将 tooltip 框限制在图表的区域内。
+    // 外层的 dom 被设置为 'overflow: hidden'，或者移动端窄屏，导致 tooltip 超出外界被截断时，此配置比较有用。
+    transitionDuration: 0.2, // 提示框浮层的移动动画过渡时间，单位是秒，设置为 0 的时候会紧跟着鼠标移动。
+  },
+  legend: {
+    // 图例显示（显示在右上角），name:类别名称，icon:图例的形状（默认是roundRect圆角矩形）。
+    show: true,
+    x: "70%", //水平位置，【left\center\right\数字】
+    y: "6%", //垂直位置，【top\center\bottom\数字】
+    data: [
+        {name: "经济衰退",
+        },
+        {name: "无经济衰退",
+        },
+    ],
+    textStyle: {
+        fontWeight: "bold",
+        fontFamily: "Microsoft YaHei",
+        color: "white",
+      },
+  },
+  toolbox: {
+    show: false,
+    orient: "vertical",
+    right: "2%",
+    feature: {
+      dataZoom: {
+        yAxisIndex: "none",
+      },
+      dataView: { readOnly: false },
+      magicType: { type: ["line", "bar"] },
+      restore: {},
+      saveAsImage: {},
+    },
+  },
+  series: [
+    {
+      type: "graph", // 关系图
+      name: "", // 系列名称，用于tooltip的显示，legend 的图例筛选，在 setOption 更新数据和配置项时用于指定对应的系列。
+      layout: "circular", // 图的布局，类型为力导图，'circular' 采用环形布局，见示例 Les Miserables
+      legendHoverLink: true, // 是否启用图例 hover(悬停) 时的联动高亮。
+      hoverAnimation: true, // 是否开启鼠标悬停节点的显示动画
+      coordinateSystem: null, // 坐标系可选
+      xAxisIndex: 0, // x轴坐标 有多种坐标系轴坐标选项
+      yAxisIndex: 0, // y轴坐标
+      circular: {
+        rotateLabel: true,
+      },
+      force: {
+        // 力引导图基本配置
+        // initLayout: , // 力引导的初始化布局，默认使用xy轴的标点
+        repulsion: 5000, // 节点之间的斥力因子。支持数组表达斥力范围，值越大斥力越大。
+        gravity: 0.02, // 节点受到的向中心的引力因子。该值越大节点越往中心点靠拢。
+        edgeLength: 200, // 边的两个节点之间的距离，这个距离也会受 repulsion影响 。值越大则长度越长
+        layoutAnimation: true, // 因为力引导布局会在多次迭代后才会稳定，这个参数决定是否显示布局的迭代动画
+        // 在浏览器端节点数据较多（>100）的时候不建议关闭，布局过程会造成浏览器假死。
+      },
+      roam: false, // 是否开启鼠标缩放和平移漫游。默认不开启，true 为都开启。如果只想要开启缩放或者平移，可以设置成 'scale' 或者 'move'
+      nodeScaleRatio: 0.6, // 鼠标漫游缩放时节点的相应缩放比例，当设为0时节点不随着鼠标的缩放而缩放
+      draggable: true, // 节点是否可拖拽，只在使用力引导布局的时候有用。
+      focusNodeAdjacency: true, // 是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点。
+      symbol:'circle', // 关系图节点标记的图形。
+      // ECharts 提供的标记类型包括：'circle'(圆形), 'rect'（矩形）, 'roundRect'（圆角矩形）,
+      // 'triangle'（三角形）, 'diamond'（菱形）, 'pin'（大头针）, 'arrow'（箭头）
+      // 也可以通过 'image://url' 设置为图片，其中 url 为图片的链接。'path:// 这种方式可以任意改变颜色并且抗锯齿
+      // symbolSize: 10 , // 也可以用数组分开表示宽和高，例如 [20, 10] 如果需要每个数据的图形大小不一样，
+      // 可以设置为如下格式的回调函数：(value: Array|number, params: Object) => number|Array
+      // symbolRotate:, // 关系图节点标记的旋转角度。注意在 markLine 中当 symbol 为 'arrow' 时会忽略 symbolRotate 强制设置为切线的角度。
+      // symbolOffset:[0,0], // 关系图节点标记相对于原本位置的偏移。[0, '50%']
+      edgeSymbol: ["none", "arrow"], // 边两端的标记类型，可以是一个数组分别指定两端，也可以是单个统一指定。
+      // 默认不显示标记，常见的可以设置为箭头，如下：edgeSymbol: ['circle', 'arrow']
+      edgeSymbolSize: 10, // 边两端的标记大小，可以是一个数组分别指定两端，也可以是单个统一指定。
+      // symbolSize: 15,
+
+      ///////////////////////////////////////////////////////////////////////
+      itemStyle: {
+        // ========图形样式，有 normal 和 emphasis 两个状态。
+        // normal 是图形在默认状态下的样式；
+        // emphasis 是图形在高亮状态下的样式，比如在鼠标悬浮或者图例联动高亮时。
+        normal: {
+          // 默认样式
+          label: {
+            show: true,
+          },
+          borderType: "solid", // 图形描边类型，默认为实线，支持 'solid'（实线）, 'dashed'(虚线), 'dotted'（点线）。
+          borderColor: "rgba(205, 149, 12, 0.4)", // 设置图形边框为淡金色,透明度为0.4
+          borderWidth: 2, // 图形的描边线宽。为 0 时无描边。
+          opacity: 1, // 图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形。默认0.5
+        },
+        emphasis: {
+          // 高亮状态
+        },
+      },
+      lineStyle: {
+        // ========关系边的公用线条样式。
+        normal: {
+          color: "#ffa022",
+          width: "1", //线的粗细
+          type: "solid", // 线的类型 'solid'（实线）'dashed'（虚线）'dotted'（点线）
+          curveness: 0.3, // 线条的曲线程度，从0到1
+          opacity: 0.5, // 图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形。默认0.5
+        },
+        emphasis: {
+          // 高亮状态
+        },
+      },
+      label: {
+        // ========结点图形上的文本标签
+        normal: {
+          show: true, // 是否显示标签。
+          //show: data.value > 2,
+          position: "right", //'inside', // 标签的位置。['50%', '50%'] [x,y]
+          textStyle: {
+            // 标签的字体样式
+            color: "#FF7853", // 字体颜色 #cde6c7 #d1c7b7 #d9d6c3 #d3d7d4
+            fontStyle: "normal", // 文字字体的风格 'normal'标准 'italic'斜体 'oblique' 倾斜
+            fontWeight: "bolder", // 'normal'标准，'bold'粗的，'bolder'更粗的，'lighter'更细的，或100 | 200 | 300 | 400...
+            fontFamily: "sans-serif", // 文字的字体系列
+            fontSize: 10, // 字体大小
+          },
+        },
+        emphasis: {
+          // 高亮状态
+        },
+      },
+      //  labelLine:'auto',
+      edgeLabel: {
+        // ========连接线上的文本标签
+        normal: {
+          show: false, // 不显示连接线上的文字，如果显示只能显示结点的value值，而不是连接线的值
+        },
+        emphasis: {
+          // 高亮状态
+        },
+      },
+      categories: [
+        {
+          name: "经济衰退",
+        },
+        {
+          name: "气候相关灾害",
+        },        
+        {
+          name: "冲突（粮食危机）",
+        },
+        {
+          name: "冲突",
+        },
+        {
+          name: "极端气候",
+        },
+        {
+          name: "无经济衰退",
+        },
+      ],
+
+      // 设置结点node的数据
+      // category: 类别序号，从0开始
+      // name: 结点图形显示的文字
+      // value: 鼠标点击结点，显示的数字
+      // symbolSize: 结点图形的大小
+      // symbol: 类目节点标记图形，默然为圆形
+      // label: 标签样式
+      data: [
+        {
+          name: "经济衰退",
+          category: "经济衰退",
+          symbol:"diamond",
+          symbolSize:"20",
+          value:"因素",
+        },
+        {
+          name: "气候相关灾害",
+          category: "气候相关灾害",
+          symbol:"diamond",
+          symbolSize:"20",
+          value:"因素",
+        },
+        {
+          name: "冲突",
+          category: "冲突",
+          symbol:"diamond",
+          symbolSize:"20",
+          value:"因素",
+        },
+        {
+          name: "冲突（粮食危机）",
+          category: "冲突（粮食危机）",
+          symbol:"diamond",
+          symbolSize:"20",
+          value:"因素",
+        },
+        {
+          name: "无经济衰退",
+          category: "无经济衰退",
+          symbol:"diamond",
+          symbolSize:"20",
+          value:"因素",
+        },
+        {
+          name: "玻利维亚",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "坦桑尼亚联合共和国",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "圣多美和普林西比",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "吉尔吉斯斯坦",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "马拉维",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "俄罗斯联邦",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "萨摩亚",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "斯威士兰",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "哥斯达黎加",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "纳米比亚",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "南非",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "马里",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "多米尼加",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "波黑",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "塞尔维亚",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "卢旺达",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "格鲁吉亚",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "安哥拉",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "巴西",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "尼泊尔",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "吉布提",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "马达加斯加",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "墨西哥",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "危地马拉",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "乌兹别克斯坦",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "肯尼亚",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "秘鲁",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "洪都拉斯",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "萨尔瓦多",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "斯里兰卡",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "莫桑比克",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "冈比亚",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "塞拉利昂",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "伯利兹",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "贝宁",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "突尼斯",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "黑山",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "多哥",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "厄瓜多尔",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "北马其顿",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "保加利亚",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "巴拉圭",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "牙买加",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "摩洛哥",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "塞内加尔",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "毛里塔尼亚",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "也门",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "巴基斯坦",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "尼日利亚",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "布基纳法索",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "乌克兰",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "黎巴嫩",
+          category: "约旦",
+          value:"国家",
+        },
+        {
+          name: "印度",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "哥伦比亚",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "泰国",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "菲律宾",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "苏丹",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "阿尔及利亚",
+          category: "经济衰退",
+          value:"国家",
+        },
+        {
+          name: "伊朗",
+          category: "无经济衰退",
+          value:"国家",
+        },
+        {
+          name: "埃塞俄比亚",
+          category: "无经济衰退",
+          value:"国家",
+        },
+        {
+          name: "越南",
+          category: "无经济衰退",
+          value:"国家",
+        },
+        {
+          name: "中国",
+          category: "无经济衰退",
+          value:"国家",
+        },
+        {
+          name: "土耳其",
+          category: "无经济衰退",
+          value:"国家",
+        },
+        {
+          name: "圭亚那",
+          category: "无经济衰退",
+          value:"国家",
+        },
+      ],
+      links: [
+        {
+          source: "经济衰退",
+          target: "经济衰退",
+        },
+        {
+          source: "气候相关灾害",
+          target: "气候相关灾害",
+        },
+        {
+          source: "冲突（粮食危机）",
+          target: "冲突（粮食危机）",
+        },
+        {
+          source: "冲突",
+          target: "冲突",
+        },
+        {
+          source: "无经济衰退",
+          target: "无经济衰退",
+        },
+        {
+          source: "极端气候",
+          target: "极端气候",
+        },
+        {
+          source: "玻利维亚",
+          target: "经济衰退",
+        },
+        {
+          source: "坦桑尼亚联合共和国",
+          target: "经济衰退",
+        },
+        {
+          source: "圣多美和普林西比",
+          target: "经济衰退",
+        },
+        {
+          source: "吉尔吉斯斯坦",
+          target: "经济衰退",
+        },
+        {
+          source: "马拉维",
+          target: "经济衰退",
+        },
+        {
+          source: "俄罗斯联邦",
+          target: "经济衰退",
+        },
+        {
+          source: "萨摩亚",
+          target: "经济衰退",
+        },
+        {
+          source: "斯威士兰",
+          target: "经济衰退",
+        },
+        {
+          source: "哥斯达黎加",
+          target: "经济衰退",
+        },
+        {
+          source: "纳米比亚",
+          target: "经济衰退",
+        },
+        {
+          source: "南非",
+          target: "经济衰退",
+        },
+        {
+          source: "马里",
+          target: "经济衰退",
+        },
+        {
+          source: "伊拉克",
+          target: "经济衰退",
+        },
+        {
+          source: "多米尼加",
+          target: "经济衰退",
+        },
+        {
+          source: "波黑",
+          target: "经济衰退",
+        },
+        {
+          source: "塞尔维亚",
+          target: "经济衰退",
+        },
+        {
+          source: "卢旺达",
+          target: "经济衰退",
+        },
+        {
+          source: "格鲁吉亚",
+          target: "经济衰退",
+        },
+        {
+          source: "安哥拉",
+          target: "经济衰退",
+        },
+        {
+          source: "巴西",
+          target: "经济衰退",
+        },
+        {
+          source: "尼泊尔",
+          target: "经济衰退",
+        },
+        {
+          source: "吉布提",
+          target: "经济衰退",
+        },
+        {
+          source: "马达加斯加",
+          target: "经济衰退",
+        },
+        {
+          source: "墨西哥",
+          target: "经济衰退",
+        },
+        {
+          source: "危地马拉",
+          target: "经济衰退",
+        },
+        {
+          source: "乌兹别克斯坦",
+          target: "经济衰退",
+        },
+        {
+          source: "肯尼亚",
+          target: "经济衰退",
+        },
+        {
+          source: "秘鲁",
+          target: "经济衰退",
+        },
+        {
+          source: "洪都拉斯",
+          target: "经济衰退",
+        },
+        {
+          source: "萨尔瓦多",
+          target: "经济衰退",
+        },
+        {
+          source: "斯里兰卡",
+          target: "经济衰退",
+        },
+        {
+          source: "莫桑比克",
+          target: "经济衰退",
+        },
+        {
+          source: "冈比亚",
+          target: "经济衰退",
+        },
+        {
+          source: "塞拉利昂",
+          target: "经济衰退",
+        },
+        {
+          source: "伯利兹",
+          target: "经济衰退",
+        },
+        {
+          source: "贝宁",
+          target: "经济衰退",
+        },
+        {
+          source: "突尼斯",
+          target: "经济衰退",
+        },
+        {
+          source: "黑山",
+          target: "经济衰退",
+        },
+        {
+          source: "多哥",
+          target: "经济衰退",
+        },
+        {
+          source: "厄瓜多尔",
+          target: "经济衰退",
+        },
+        {
+          source: "北马其顿",
+          target: "经济衰退",
+        },
+        {
+          source: "保加利亚",
+          target: "经济衰退",
+        },
+        {
+          source: "巴拉圭",
+          target: "经济衰退",
+        },
+        {
+          source: "牙买加",
+          target: "经济衰退",
+        },
+        {
+          source: "摩洛哥",
+          target: "经济衰退",
+        },
+        {
+          source: "塞内加尔",
+          target: "经济衰退",
+        },
+        {
+          source: "毛里塔尼亚",
+          target: "经济衰退",
+        },
+        {
+          source: "也门",
+          target: "经济衰退",
+        },
+        {
+          source: "巴基斯坦",
+          target: "经济衰退",
+        },
+        {
+          source: "尼日利亚",
+          target: "经济衰退",
+        },
+        {
+          source: "布基纳法索",
+          target: "经济衰退",
+        },
+        {
+          source: "乌克兰",
+          target: "经济衰退",
+        },
+        {
+          source: "黎巴嫩",
+          target: "经济衰退",
+        },
+        {
+          source: "约旦",
+          target: "经济衰退",
+        },
+        {
+          source: "印度",
+          target: "经济衰退",
+        },
+        {
+          source: "泰国",
+          target: "经济衰退",
+        },
+        {
+          source: "菲律宾",
+          target: "经济衰退",
+        },
+        {
+          source: "苏丹",
+          target: "经济衰退",
+        },
+        {
+          source: "阿尔及利亚",
+          target: "经济衰退",
+        },
+        {
+          source: "伊朗",
+          target: "无经济衰退",
+        },
+        {
+          source: "埃塞俄比亚",
+          target: "无经济衰退",
+        },
+        {
+          source: "越南",
+          target: "无经济衰退",
+        },
+        {
+          source: "中国",
+          target: "无经济衰退",
+        },
+        {
+          source: "土耳其",
+          target: "无经济衰退",
+        },
+        {
+          source: "圭亚那",
+          target: "无经济衰退",
+        },
+        {
+          source: "马里",
+          target: "冲突（粮食危机）",
+        },
+        {
+          source: "伊拉克",
+          target: "冲突（粮食危机）",
+        },
+        {
+          source: "多米尼加",
+          target: "气候相关灾害",
+        },
+        {
+          source: "波黑",
+          target: "气候相关灾害",
+        },
+        {
+          source: "塞尔维亚",
+          target: "气候相关灾害",
+        },
+        {
+          source: "卢旺达",
+          target: "气候相关灾害",
+        },
+        {
+          source: "格鲁吉亚",
+          target: "气候相关灾害",
+        },
+        {
+          source: "安哥拉",
+          target: "气候相关灾害",
+        },
+        {
+          source: "巴西",
+          target: "气候相关灾害",
+        },
+        {
+          source: "尼泊尔",
+          target: "气候相关灾害",
+        },
+        {
+          source: "吉布提",
+          target: "气候相关灾害",
+        },
+        {
+          source: "马达加斯加",
+          target: "气候相关灾害",
+        },
+        {
+          source: "墨西哥",
+          target: "气候相关灾害",
+        },
+        {
+          source: "危地马拉",
+          target: "气候相关灾害",
+        },
+        {
+          source: "乌兹别克斯坦",
+          target: "气候相关灾害",
+        },
+        {
+          source: "肯尼亚",
+          target: "气候相关灾害",
+        },
+        {
+          source: "秘鲁",
+          target: "气候相关灾害",
+        },
+        {
+          source: "洪都拉斯",
+          target: "气候相关灾害",
+        },
+        {
+          source: "萨尔瓦多",
+          target: "气候相关灾害",
+        },
+        {
+          source: "斯里兰卡",
+          target: "气候相关灾害",
+        },
+        {
+          source: "莫桑比克",
+          target: "气候相关灾害",
+        },
+        {
+          source: "冈比亚",
+          target: "极端气候",
+        },
+        {
+          source: "塞拉利昂",
+          target: "极端气候",
+        },
+        {
+          source: "伯利兹",
+          target: "极端气候",
+        },
+        {
+          source: "贝宁",
+          target: "极端气候",
+        },
+        {
+          source: "突尼斯",
+          target: "极端气候",
+        },
+        {
+          source: "黑山",
+          target: "极端气候",
+        },
+        {
+          source: "多哥",
+          target: "极端气候",
+        },
+        {
+          source: "厄瓜多尔",
+          target: "极端气候",
+        },
+        {
+          source: "北马其顿",
+          target: "极端气候",
+        },
+        {
+          source: "保加利亚",
+          target: "极端气候",
+        },
+        {
+          source: "巴拉圭",
+          target: "极端气候",
+        },
+        {
+          source: "牙买加",
+          target: "极端气候",
+        },
+        {
+          source: "摩洛哥",
+          target: "极端气候",
+        },
+        {
+          source: "塞内加尔",
+          target: "极端气候",
+        },
+        {
+          source: "毛里塔尼亚",
+          target: "极端气候",
+        },
+        {
+          source: "也门",
+          target: "冲突（粮食危机）",
+        },
+        {
+          source: "尼日利亚",
+          target: "冲突（粮食危机）",
+        },
+        {
+          source: "布基纳法索",
+          target: "冲突（粮食危机）",
+        },
+        {
+          source: "乌克兰",
+          target: "冲突（粮食危机）",
+        },
+        {
+          source: "巴基斯坦",
+          target: "冲突（粮食危机）",
+        },
+        {
+          source: "也门",
+          target: "气候相关灾害",
+        },
+        {
+          source: "尼日利亚",
+          target: "气候相关灾害",
+        },
+        {
+          source: "布基纳法索",
+          target: "气候相关灾害",
+        },
+        {
+          source: "乌克兰",
+          target: "气候相关灾害",
+        },
+        {
+          source: "巴基斯坦",
+          target: "气候相关灾害",
+        },
+        {
+          source: "黎巴嫩",
+          target: "极端气候",
+        },
+        {
+          source: "约旦",
+          target: "极端气候",
+        },
+        {
+          source: "黎巴嫩",
+          target: "冲突（粮食危机）",
+        },
+        {
+          source: "约旦",
+          target: "冲突（粮食危机）",
+        },
+        {
+          source: "阿尔及利亚",
+          target: "冲突",
+        },
+        {
+          source: "阿尔及利亚",
+          target: "极端气候",
+        },
+      ],
+    },
+  ],
+};
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
+    </body>
+</html>

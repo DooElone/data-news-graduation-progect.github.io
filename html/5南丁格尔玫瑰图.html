@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+        <meta charset="utf-8" />
+        <title>我国粮食生产结构</title>
+        <!-- 引入 ECharts 文件 -->
+        <script src="../js/echarts.js"></script>
+        <style>
+          body{
+            background-image: url(../img/bg.png);
+          }
+          .left:hover{
+              cursor: pointer;
+              filter: brightness(50%);
+          }
+          .right:hover{
+              cursor: pointer;
+              filter: brightness(50%);
+          }
+        </style>
+        </head>
+    <body>
+      <div class="zong" style="width: 1200px;height: auto;margin: 0 auto;">
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+        <div id="main" style="width: 1200px;height:700px;margin: 0 auto;"></div>
+        <div class="wenzi" style="width: 360px;position:relative;margin-left: 60%;margin-top: -45%;">
+          <p style="color: white;line-height: 25px;">具体看2020年我国粮食生产结构，我国主要以玉米、稻谷和小麦等基础粮食作物为主，三类谷物粮食作物产量合计占2020
+            年全年粮食产量的90%以上。综合来看，目前我国粮食供需情况良好，在粮食安全问题上不存在危机。稻谷（大米）和小麦（面粉）两大主粮实现完全自
+            给，乃至略有富余。我国粮食问题主要系粮食结构过剩：主粮（口粮）充裕，与谷物（饲料）偏紧、大豆（油料、植物蛋
+            白）不足的矛盾。</p>
+        </div>
+        <div style="width: 3%;position: fixed;top: 40%;left: 0;"><a href="./4进出口.html"><img src="../img/left.png" class="left" style="width: 100%;"></a></div>
+        <div style="width: 3%;position: fixed;top: 40%;right: 0;"><a href="./6雷达图.html"><img src="../img/right.png" class="right" style="width: 100%;"></a></div>
+      </div>
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'));
+            // 指定图表的配置项和数据
+            	//用到的数据
+                var legenddata = [
+        {name:'玉米',Confirmed:260876,Dead:15.6},
+        {name:'大米',Confirmed:213611,Dead:12.77},
+        {name:'其他新鲜蔬菜',Confirmed:170350,Dead:10.19},
+        {name:'稻谷（精米当量）',Confirmed:142478,Dead:8.52},
+        {name:'小麦',Confirmed:134255,Dead:8.03},
+        {name:'甘蔗',Confirmed:108652,Dead:6.5},
+        {name:'土豆',Confirmed:78237,Dead:6.48},
+        {name:'黄瓜',Confirmed:72833,Dead:4.36},
+        {name:'番茄',Confirmed:64866,Dead:3.88},
+        {name:'西瓜',Confirmed:60247,Dead:3.6},
+        {name:'红薯',Confirmed:49196,Dead:2.94},
+        {name:'猪肉',Confirmed:42102,Dead:2.52},
+        {name:'苹果',Confirmed:40501,Dead:2.42},
+        {name:'蘑菇',Confirmed:40005,Dead:2.39},
+        {name:'茄子',Confirmed:36593,Dead:2.19},
+        {name:'牛奶',Confirmed:34837,Dead:2.08},
+        {name:'甘蓝',Confirmed:34207,Dead:2.05},
+        {name:'鸡蛋',Confirmed:30248,Dead:1.81},
+        {name:'种子棉',Confirmed:29500,Dead:1.76},
+        {name:'菠菜',Confirmed:28521,Dead:1.71},
+],
+option = {
+    dataset: {
+        source: [
+        ["Country", "Confirmed", "SQRT", "Dead"],
+        ["玉米", 260876, 292.9846412, 15.6],
+        ["大米", 213611, 283.8820177, 12.77],
+        ["其他新鲜蔬菜", 170350, 240.3871877, 10.19],
+        ["稻谷（精米当量）", 142478, 209.6139308, 8.52],
+        ["小麦", 134255, 171.9476665, 8.03],
+        ["甘蔗", 108652, 171.4817775, 6.5],
+        ["土豆", 78237, 108.6830254, 6.48],
+        ["黄瓜", 72833, 108.6784247, 4.36],
+        ["番茄", 64866, 96.60227741, 3.88],
+        ["西瓜", 60247, 86.42337647, 3.6],
+        ["红薯", 49196, 83.12039461, 2.94],
+        ["猪肉", 42102, 78.96201618, 2.52],
+        ["苹果", 40501, 63.60817558, 2.42],
+        ["蘑菇", 40005, 60.24118193, 2.39],
+        ["茄子", 36593, 59.53150426, 2.19],
+        ["牛奶", 34837, 58.06892456, 2.08],
+        ["甘蓝", 34207, 54.69003566, 2.05],
+        ["鸡蛋", 30248, 54.63515352, 1.81],
+        ["种子棉", 29500, 53.29165038, 1.76],
+        ],
+    },
+    toolbox: {
+      show: false, //false则不显示工具栏
+      feature: {
+        saveAsImage: { show: true, type: "jpeg" },
+      },
+    },
+    title: {
+      text: "2020年我国食物商品生产结构",
+      subtext: "单位：千美元，%",
+      x: "60%",
+      y: "70",
+      textStyle: {
+        fontSize: 27,
+        fontWeight: "bold",
+        fontFamily: "Microsoft YaHei",
+        color: "white",
+      },
+      subtextStyle: {
+        fontStyle: "italic",
+        fontSize: 14,
+      },
+    },
+    legend: {
+      x: "60%", //水平位置，【left\center\right\数字】
+      y: "450", //垂直位置，【top\center\bottom\数字】
+      align: "left", //字在图例的左边或右边【left/right】
+      orient: "vertical", //图例方向【horizontal/vertical】
+      icon: "circle", //图例形状【circle\rect\roundRect\triangle\diamond\pin\arrow\none】
+      //图例文字
+      textStyle: {
+        fontFamily: "微软雅黑",
+        color: "white",
+      },
+      data: [
+        "玉米",
+        "大米",
+        "其他新鲜蔬菜",
+        "稻谷（精米当量）",
+        "小麦",
+        "甘蔗",
+        "土豆",
+        "黄瓜",
+        "番茄",
+        "西瓜",
+        "红薯",
+        "猪肉",
+        "苹果",
+        "蘑菇",
+        "茄子",
+        "牛奶",
+        "甘蓝",
+        "鸡蛋",
+        "种子棉",
+        "菠菜",
+      ],
+      formatter: function (params) {
+        console.log("图例参数", params);
+        for (var i = 0; i < legenddata.length; i++) {
+          if (legenddata[i].name == params) {
+            return (
+              params +
+              "\t总额:" +
+              legenddata[i].Confirmed +
+              "\t占比:" +
+              legenddata[i].Dead
+            );
+          }
+        }
+      },
+    },
+
+    calculable: true,
+    series: [
+      {
+        name: "半径模式",
+        type: "pie",
+        clockWise: false,
+        radius: [20, 400],
+        center: ["40%", "60%"],
+        roseType: "area",
+        encode: {
+          itemName: "Country",
+          value: "SQRT",
+        },
+        itemStyle: {
+          normal: {
+            color: function (params) {
+              var colorList = [
+                "#a71a4f",
+                "#bc1540",
+                "#c71b1b",
+                "#d93824",
+                "#ce4018",
+                "#d15122",
+                "#e7741b",
+                "#e58b3d",
+                "#e59524",
+                "#dc9e31",
+                "#da9c2d",
+                "#d2b130",
+                "#bbd337",
+                "#8cc13f",
+                "#67b52d",
+                "#53b440",
+                "#48af54",
+                "#479c7f",
+                "#48a698",
+                "#57868c",
+              ];
+              return colorList[params.dataIndex];
+            },
+            label: {
+              position: "inside",
+              textStyle: {
+                fontFamily: "Microsoft YaHei",
+                color: "#FAFAFA",
+                fontSize: 10,
+              },
+              formatter: function (params) {
+                console.log("参数列表", params);
+                if (params.data[1] > 9000) {
+                  return (
+                    params.data[0] +
+                    "\n" +
+                    params.data[3] +
+                    "%"
+                  );
+                } else {
+                  return "";
+                }
+              },
+            },
+          },
+        },
+      },
+      {
+        name: "透明圆圈",
+        type: "pie",
+        radius: [10, 27],
+        center: ["40%", "60%"],
+        itemStyle: {
+          color: "rgba(250, 250, 250, 0.3)",
+        },
+        data: [{ value: 10, name: "" }],
+      },
+      {
+        name: "透明圆圈",
+        type: "pie",
+        radius: [10, 35],
+        center: ["40%", "60%"],
+        itemStyle: {
+          color: "rgba(250, 250, 250, 0.3)",
+        },
+        data: [{ value: 10, name: "" }],
+      },
+    ],
+  };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
+    </body>
+</html>

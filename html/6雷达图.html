@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <title>我国主要农作物种植结构</title>
+            <!-- 引入刚刚下载的 ECharts 文件 -->
+            <script src="../js/echarts.js"></script>
+            <style>
+                body{
+                    background-image: url(../img/bg.png);
+                }
+                .left:hover{
+                    cursor: pointer;
+                    filter: brightness(50%);
+                }
+                .right:hover{
+                    cursor: pointer;
+                    filter: brightness(50%);
+                }
+            </style>
+            </head>
+    <body>
+        <div class="zong" style="width: 1200px;margin: 0 auto;">
+            <div class="tittle"><h1 style="text-align: center;color: white;">我国主要农作物种植结构</h1></div>
+            <div class="tittle"><h5 style="text-align: center;color: rgba(255, 255, 255, 0.699);margin: 0;">单位：%</h5></div>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+            <div id="main" style="width: 700px;height:600px;float: left;"></div>
+            <div class="wenzi" style="width: 500px;color: white;float: right;line-height: 25px;">
+                <div class="wenzi1" style="width: 350px;margin: 0 auto;line-height: 30px;border:solid 1px white;border-radius: 15px;background-color: rgba(185, 178, 178, 0.336);margin-top: 50px;">
+                    <p>备注：<br>
+                        种植结构指的是一个地区或国家在农作物种类种植比例上的问题，一般以粮食作物为主，其他经济类作物为辅。<br>
+                        本指标的统计数据来源于农业农村部。
+                    </p>
+                </div>
+                <div class="wenzi2" style="margin-top: 50px;line-height: 30px;">种植结构是农业供给侧结构性改革的重点，也是实现脱贫的根本之策。近年来，我国大力调整农业种植结构，获得了较好的经济效益。<br>
+                    目前我国存在着粮食供求总量平衡与部分品种阶段性过剩的矛盾，特别是玉米连续增产和消费需求持续下降同步出现。</div>
+            </div>
+            <div style="width: 3%;position: fixed;top: 40%;left: 0;"><a href="./5南丁格尔玫瑰图.html"><img src="../img/left.png" class="left" style="width: 100%;"></a></div>
+            <div style="width: 3%;position: fixed;top: 40%;right: 0;"><a href="./7乡村人口.html"><img src="../img/right.png" class="right" style="width: 100%;"></a></div>
+        </div>
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'));
+            // 指定图表的配置项和数据
+            	//用到的数据
+                var nameArr = [
+                        { name: '稻谷', max: 25},
+                        { name: '小麦', max: 20},
+                        { name: '玉米', max: 30},
+                        { name: '谷子', max: 1.2},
+                        { name: '高粱', max: 1},
+                        { name: '其他谷物', max: 3},
+                        { name: '大豆', max: 8},
+                        { name: '杂豆', max: 3},
+                        { name: '马铃薯', max: 4},
+                        { name: '花生', max: 4},
+                        { name: '油菜籽', max: 5},
+                        { name: '芝麻', max: 0.5},
+                        { name: '胡麻籽', max: 0.5},
+                        { name: '向日葵', max: 1},
+                        { name: '棉花', max: 4},
+                        { name: '黄红麻', max: 0.1},
+                        { name: '苎麻', max: 0.1},
+                        { name: '大麻', max: 0.01},
+                        { name: '亚麻', max: 0.1},
+                        { name: '甘蔗', max: 1},
+                        { name: '甜菜', max: 0.5},
+                        { name: '烤烟', max: 1},
+                        { name: '药材', max: 1.5},
+                        { name: '蔬菜', max: 15},
+                        { name: '瓜果', max: 1.5},
+                        { name: '其他农作物', max: 5},
+                        { name: '青饲料', max: 3},
+        ];
+option = {
+    baseOption:{
+    timeline: { 
+        axisType: 'category',
+        symbolSize:8,
+        lineStyle:{
+            color:'#00a6bd'
+        },
+        itemStyle:{
+            color:'#f25a76'
+        },
+        checkpointStyle:{
+            color:'#f25a76'
+        },
+        controlStyle:{
+            color:'#00a6bd',
+            borderColor:'#00a6bd'
+        },
+        label:{
+            color:'#00a6bd'
+        },
+        autoPlay: false,
+        playInterval: 1500,
+        data: ['1995', '2000','2005', '2010','2015', '2020']
+    },
+    color:['#f25a76','#00a6bd'],
+    title: {
+        left:'center',
+        top:15,
+        textStyle:{
+            color:'#fff'
+        }
+    },
+    tooltip: {},
+    radar: {
+        shape:'circle',
+        name: {
+            textStyle: {
+                color: 'rgb(238, 197, 102)',
+                backgroundColor: 'rgba(0,0,0,0.6)',
+                borderRadius: 3,
+                padding: [3, 5]
+            },
+        axisLabel:{
+            rotate:50
+        }
+        },
+        nameGap:20,
+        indicator: nameArr,
+        splitNumber: 5,
+        splitLine: {
+            lineStyle: {
+                color: [
+                    'rgba(238, 197, 102, 0.1)', 'rgba(238, 197, 102, 0.2)',
+                    'rgba(238, 197, 102, 0.4)', 'rgba(238, 197, 102, 0.6)',
+                    'rgba(238, 197, 102, 0.8)', 'rgba(238, 197, 102, 1)'
+                ].reverse()
+            }
+        },
+        splitArea: {
+            show: false
+        },
+        axisLine: {
+            lineStyle: {
+                color: 'rgba(238, 197, 102, 0.5)'
+            }
+        }
+    },
+    series: [{
+        name: '标题',
+        type: 'radar',
+        tooltip:{
+            trigger:'item',
+            position:[10,10],
+            padding:10,
+            backgroundColor:'rgba(0,0,0,.8)',
+            borderColor: '#00a6bd',
+            borderWidth: '2',
+            extraCssText:'width:400px',
+            formatter:function(param){
+                var returnStr = '';
+                var valueArr = param.value;
+                returnStr += param.data.value2 + '<br/>';
+                for(var i in valueArr){
+                    if(valueArr[i] > 0){
+                        var oneStr = nameArr[i].name + '：' + valueArr[i]+'<br>';
+                        returnStr += oneStr ;
+                    }
+                }
+                return returnStr;
+            }
+        },
+    }]
+    },
+    options:[
+        {   title:{text: ''},
+            series:[{
+                data : [
+                    {
+                        value : [20.51,19.06,15.2,1.02,0.81,0,5.42,2.07,2.29,2.54,4.61,0.43,0.41,0.54,3.62,0.1,0.06,0.01,0.08,0.75,0.46,0.87,0.19,0.35,0.73,4.49,1.22],
+                        name : '',
+                        value2:'<span style="font-size:18px;font-weight:600;">1995年    单位：%</span>'
+                    }
+                ]
+            }]
+            
+        },    
+        {   title:{text: ''},
+            series:[{
+                data : [
+                    {
+                        value : [19.17,17.05,14.75,0.8,0.57,2.21,5.95,2.15,3.02,3.11,4.79,0.5,0.32,0.79,2.59,0.03,0.06,0.01,0.06,0.76,0.21,0.81,0.43,9.75,1.31,4.7,1.37],
+                        name : '',
+                        value2:'<span style="font-size:18px;font-weight:600;">2000年    单位：%</span>'
+                    },
+                ]
+            }]
+            
+        },
+        {   title:{text: ''},
+            series:[{
+                data : [
+                    {
+                        value : [18.55,14.66,16.95,0.55,0.37,1.58,6.17,2.13,3.14,3,4.68,0.38,0.26,0.66,3.26,0.02,0.08,0.01,0.1,0.87,0.14,0.8,0.78,11.4,1.42,4.78,2.17,],
+                        name : '',
+                        value2:'<span style="font-size:18px;font-weight:600;">2005年    单位：%</span>'
+                    }
+                ]
+            }]
+            
+        },
+        {   title:{text: ''},
+            series:[{
+                data : [
+                    {
+                        value : [18.98,15.41,22.06,0.51,0.32,1.12,5.49,1.48,3.08,2.76,4.61,0.23,0.18,0.62,2.75,0.01,0.04,0,0.01,1.02,0.12,0.76,0.8,10.99,1.4,2.96,1.11],
+                        name : '',
+                        value2:'<span style="font-size:18px;font-weight:600;">2010年    单位：%</span>'
+                    }
+                ]
+            }]
+            
+        },
+        {   title:{text: ''},
+            series:[{
+                data : [
+                    {
+                        value : [18.45,14.73,26.95,0.5,0.25,0.98,4.09,0.96,2.87,2.63,4.21,0.18,0.15,0.65,2.26,0.01,0.02,0.01,0,0.88,0.06,0.72,1.12,11.76,1.32,2.53,0.98],
+                        name : '',
+                        value2:'<span style="font-size:18px;font-weight:600;">2015年    单位：%</span>'
+                    }
+                ]
+            }]
+            
+        },
+        {   title:{text: ''},
+            series:[{
+                data : [
+                    {
+                        value : [17.96,13.96,24.64,0.54,0.38,1.02,5.9,1.02,2.78,2.82,4.04,0.17,0.11,0.52,1.89,0,0.02,0.01,0,0.81,0.13,0.58,1.73,12.83,1.29,3.12,1.31],
+                        name : '',
+                        value2:'<span style="font-size:18px;font-weight:600;">2020年    单位：%</span>'
+                    }
+                ]
+            }]
+            
+        },
+    ]
+};
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
+    </body>
+</html>

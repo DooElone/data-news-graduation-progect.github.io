@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+       <title>农村男女年龄及从事农业生产年数构成</title>
+       <style>
+        .left:hover{
+            cursor: pointer;
+            filter: brightness(50%);
+        }
+        .right:hover{
+            cursor: pointer;
+            filter: brightness(50%);
+        }
+        body{
+            background-size: 100%;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+   </head>
+   <body style="height: 90%;">
+       <div id="container" style="height: 100%;"></div>
+       <script type="text/javascript" src="../js/echarts.js"></script>
+       <div class="wenzi" style="margin: 0 auto;width: 100%;font-size: 20px;">
+        <p style="width: 90%;margin: 0 auto;padding: 5px;">根据抽样调查显示，农村从事农业劳动人口构成中，青壮年（30-40岁）人群出现明显缺失，农村劳动力主要集中于青年（20-30岁）和老年（50-60岁）人群。</p>
+    </div>
+    <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    title : {
+        text: '农村男女年龄及从事农业生产年数构成',
+        subtext: '数据来源：抽样调查'
+    },
+    grid: {
+        left: '3%',
+        right: '7%',
+        bottom: '3%',
+        containLabel: true,
+
+    },
+    tooltip : {
+    },
+    brush: {
+    },
+    legend: {
+        data: ['女性','男性'],
+        left: 'center',
+    },
+    xAxis : [
+        {
+            type : 'value',
+            scale:true,
+            axisLabel : {
+                formatter: '{value} 岁'
+            },
+            splitLine: {
+                show: false,
+                color:'black',
+            },
+            axisLine:{
+                lineStyle:{
+                    color:'black',
+                },
+                
+            }
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value',
+            scale:true,
+            axisLabel : {
+                formatter: '{value} 年'
+            },
+            splitLine: {
+                show: false
+            },
+            axisLine:{
+                lineStyle:{
+                    color:'black',
+                }
+            }
+        }
+    ],
+    series : [
+        {
+            name:'女性',
+            type:'scatter',
+            data: [[19, 2], [18, 1], [21, 1], [23, 5], [23, 6],
+                [25, 5], [25, 4], [26, 8], [25, 6], [31, 10],
+                [26, 10], [27, 10], [28, 9], [26, 12], [29, 10],
+                [30, 12], [32, 12], [33, 11], [39, 18], [41, 21],
+                [41, 22], [42, 23], [43, 23], [49, 30], [45, 25],
+                [46, 21], [47, 20], [41, 22], [42, 13], [44, 24],
+                [43, 21], [45, 18], [43, 17], [46, 30], [47, 30],
+                [50, 28], [50, 30], [51, 31], [52, 34], [53, 36],
+                [59, 39], [52, 29], [57, 39], [57, 26], [56, 25],
+                [51, 27], [53, 31], [52, 32], [52, 34], [57, 39],
+                [56, 39], [56, 30], [57, 40], [59, 40], [53, 41],
+                [52, 34], [57, 38], [59, 30], [51, 30], [52, 31],
+                [53, 36], [60, 43], [61, 39], [60, 40], [61, 43],
+                [62, 44], [63, 44], 
+            ],
+            markArea: {
+                silent: true,
+                itemStyle: {
+                    normal: {
+                        color: 'transparent',
+                        borderWidth: 1,
+                        borderType: 'dashed',
+                    }
+                },
+                data: [[{
+                    name: '女性分布区间',
+                    xAxis: 'min',
+                    yAxis: 'min'
+                }, {
+                    xAxis: 'max',
+                    yAxis: 'max'
+                }]]
+            },
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                lineStyle: {
+                    normal: {
+                        type: 'solid',
+                        color:'black',
+                    }
+                },
+                data : [
+                    {type : 'average', name: '平均值'},
+                    { xAxis: 160}
+                ]
+            }
+        },
+        {
+            name:'男性',
+            type:'scatter',
+            data: [[16, 1], [18, 1], [21, 3], [22, 4], [25, 3],
+                [31, 3], [27, 6], [29, 9], [32, 10], [33, 17],
+                [31, 12], [28, 10], [28, 8], [26, 10], [26, 10],
+                [25, 5], [30, 16], [33, 12], [41, 15], [42, 20],
+                [41, 22], [43, 23], [45, 22], [48, 30], [43, 23],
+                [45, 27], [44, 30], [46, 31], [43, 19], [43, 20],
+                [43, 23], [46, 21], [49, 25], [45, 28], [51, 23],
+                [53, 30], [52, 31], [53, 34], [54, 36], [53, 38],
+                [52, 30], [56, 30], [57, 36], [59, 36], [53, 40],
+                [52, 42], [51, 38], [52, 36], [53, 35], [55, 33],
+                [57, 32], [58, 31], [59, 32], [57, 33], [53, 35],
+                [54, 31], [52, 31], [55, 32], [52, 30], [54, 33],
+                [50, 34],
+            ],
+            markArea: {
+                silent: true,
+                itemStyle: {
+                    normal: {
+                        color: 'transparent',
+                        borderWidth: 1,
+                        borderType: 'dashed'
+                    }
+                },
+                data: [[{
+                    name: '男性分布区间',
+                    xAxis: 'min',
+                    yAxis: 'min'
+                }, {
+                    xAxis: 'max',
+                    yAxis: 'max'
+                }]]
+            },
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                lineStyle: {
+                    normal: {
+                        type: 'solid',
+                        color:'black',
+                    }
+                },
+                data : [
+                    {type : 'average', name: '平均值'},
+                    { xAxis: 170 }
+                ]
+            }
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+               <div style="width: 3%;position: fixed;top: 40%;left: 0;"><a href="./7乡村人口.html"><img src="../img/left.png" class="left" style="width: 100%;"></a></div>
+               <div style="width: 3%;position: fixed;top: 40%;right: 0;"><a href="./9矩形图.html"><img src="../img/right.png" class="right" style="width: 100%;"></a></div>
+   </body>
+</html>

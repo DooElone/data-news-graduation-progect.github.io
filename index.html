@@ -1,1 +1,84 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut  icon" href="./img/icon.png" type="image/x-icon" />
+    <title>数读：天下粮仓应无恙，禾下乘凉稻花香</title>
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <style>
+        .tittle p{
+            margin-top: 30px;
+        }
+        .enter{
+            margin: 0 auto;
+            z-index: 999;
+            bottom: 2%;
+            position: absolute;
+            left: 40%;
+            width: 20%;
+            border: 2px solid white;
+        }
+        .enter p{
+            text-align: center;
+            font-weight: bold;
+            margin-top: 0;
+            padding: 5px;
+        }
+        .enter:hover{
+            cursor: pointer;
+            border-radius: 40px;
+            transition: 1.4s;
+            background-color: rgba(45, 43, 43, 0.666);
+        }
+        .foot a{
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+            font-weight: bolder;
+        }
+        .foot a:hover{
+            border-bottom: 1px solid rgba(255, 255, 255, 0.688);
+            transition: 1.4s;
+            color: rgba(255, 255, 255, 0.688);
+        }
+    </style>
+</head>
+<body>
+    <!-- 插件基本结构 -->
+            <div class="section">
+            <video autoplay loop muted>
+                <source src="./video/topbg.mp4" type="video/mp4"  />
+            </video>
+                <div class="tittle">
+                    <div class="title">
+                        <h1>数读：</h1>
+                        <h1 style="text-align: center;">天下粮仓应无恙,禾下乘凉稻花香</h1>
+                    </div>
+                    <div class="title2">
+                        <p>一部中华民族史，就是一部同饥饿斗争的历史。挨饿，曾是最深最痛的民族记忆。反饥饿，不仅是中国人的斗争，也是全世界人民的斗争。面对全球粮食危机，中国人民不负“禾下乘凉梦” 牢守18亿亩“口粮田”。“一条大河波浪宽，风吹稻花香两岸……”，你听，传承的决心，如风吹稻浪……</p>
+                    </div>
+                    <div class="enter"><a href="./html/1世界地图.html" style="text-decoration: none;"><p>进入</p></a></div>
+                </div>
+                <div class="foot" style="width: 50%;margin: 0 auto;z-index: 9999;position: absolute;bottom: 10px;color: white;">
+                    <h7 style="font-size: 15px;">提示：</h7>
+                    <p style="font-size: 10px;">本设计的最佳阅读窗口大小为：1280×700。</p>
+                    <script>
+                        var screenWidth = document.body.clientWidth
+                        var screenHight = document.body.clientHeight
+                        var str = screenWidth + '×' + screenHight + '。'
+                        document.write('您目前的浏览器窗口大小为' + str)
+                    </script>
+                    <p style="font-size: 10px;"><a href="#" id="tanchuang">点击此处</a>自动将您的浏览器窗口调整为合适大小。（部分浏览器可能不支持）</p>
+                    <script>
+                        var tanchuang = document.getElementById('tanchuang')
+                        console.log(tanchuang)
+                        tanchuang.onclick = function(){
+                            myWindow=window.open('./index.html','','width=1280,height=700','resizable = no');
+                            myWindow.focus()
+                            window.close()
+                        }
+                    </script>
+                </div>
+            </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+/*简单reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    font: 12px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+}
+@media (min-width: 1200px) {
+    body {
+    font: 40px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+    }
+}
+@media (min-width: 1200px) {
+    .foot {
+    font: 10px/ 1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+    }
+}
+h1{
+    text-align: left;
+    color: white;
+    font-size: 3.5rem;
+    font-family: tittle;
+}
+p{
+    text-align: left;
+    color: white;
+    font-size: 0.4em;
+    font-family: tittle;
+}
+@font-face{
+    font-family: tittleß;
+    src:url('/font/经典毛笔字体.ttf');
+}
+
+/*必须，关系到单个page能否全屏显示*/
+#container,
+.sections,
+.section {
+    /*必须，兼容，在浏览器不支持transform属性时，通过改变top/left完成滑动动画*/
+    position: relative;
+    /*必须，关系到单个page能否全屏显示*/
+    height: 100%;
+}
+
+
+/*第一个页面，主要写毕业设计选题*/
+
+
+/* 非必需，只是用来设置背景图，id不会被插件用到 */
+video{  
+    position: fixed;
+    right: 0px;
+    bottom: 0px;  
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;  
+    width: auto;  
+    z-index:0
+}  
+source{  
+    min-width: 100%;  
+    min-height: 100%;  
+    height: auto;  
+    width: auto;  
+}
+.tittle{
+    position:absolute;
+    width: 50%;
+    height: 50%;
+    left: 25%;
+    top: 20%;
+    right: 25%;
+    bottom: 25%;
+    padding: 1ex;
+    border: white 0.4ex solid;
+    background-color: rgba(0, 0, 0, 0.103);
+    backdrop-filter: blur(4px);
+}
+.tittle h1{
+    margin-top: 0.5ex;
+}
+/*以下样式用来设置slider样式，可自行修改*/
+
+#canvas{
+    display: block;
+}

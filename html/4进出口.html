@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <title>我国粮食进出口趋势</title>
+            <!-- 引入刚刚下载的 ECharts 文件 -->
+            <script src="../js/echarts.js"></script>
+            <style>
+              .left:hover{
+              cursor: pointer;
+              filter: brightness(50%);
+              }
+              .right:hover{
+                  cursor: pointer;
+                  filter: brightness(50%);
+              }
+            </style>
+          </head>
+    <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div class="zong" style="width: 1200px;">
+      <div class="title"><h1 style="text-align: center;">我国粮食进口维持亿吨水平，出口呈波动上升局势</h1></div>
+      <div id="main" style="width: 700px;height:500px;float: left;left: 5%;"></div>
+      <div class="wenzi" style="width:450px;float: right;right: 5%;">
+        <div class="wenzi2"><p style="margin-top: 50px;line-height: 30px;">2014年以来，我国粮食进口量维持在1亿吨以上，但从2017年起我国粮食进口量下降明显，主要原因包括国内开展供给侧改
+          革，导致国内外粮价价差缩小、美国进口农产品进口量大幅下降及国内养殖疫情等三方因素影响。2019年，我国累计粮食进
+          口1.11亿吨，进口金额419.83亿美元。而出口方面我国粮食出口呈现波动上升的局面， 2019年，我国累计粮食出口434万
+          吨，出口金额24.13亿美元。</p></div>
+          <div style="width: 3%;position: fixed;top: 40%;left: 0;"><a href="./2关系图.html"><img src="../img/left.png" class="left" style="width: 100%;"></a></div>
+          <div style="width: 3%;position: fixed;top: 40%;right: 0;"><a href="./5南丁格尔玫瑰图.html"><img src="../img/right.png" class="right" style="width: 100%;"></a></div>
+      </div>
+    </div>
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'));
+            // 指定图表的配置项和数据
+            	//用到的数据
+                option = {
+  title: {
+    text: "中国粮食进出口数量情况",
+    subtext: "中国海关总署",
+    x: "center",
+    align: "right",
+  },
+  grid: {
+    bottom: 80,
+  },
+  tooltip: {
+    trigger: "axis",
+    formatter: function (params) {
+      return (
+        params[0].name +
+        "<br/>" +
+        params[0].seriesName +
+        " : " +
+        params[0].value +
+        " (万吨)<br/>" +
+        params[1].seriesName +
+        " : " +
+        params[1].value +
+        " (万吨)"
+      );
+    },
+    axisPointer: {
+      type: "cross",
+      animation: false,
+    },
+  },
+  legend: {
+    data: ["进口量", "出口量"],
+    x: "left",
+  },
+  dataZoom: [
+    {
+      show: true,
+      realtime: true,
+      start: 0,
+      end: 100,
+    },
+    {
+      type: "inside",
+      realtime: true,
+      start: 0,
+      end: 100,
+    },
+  ],
+  xAxis: [
+    {
+      type: "category",
+      boundaryGap: true,
+      axisLine: { onZero: false },
+      data: [
+        "2010",
+        "2011",
+        "2012",
+        "2013",
+        "2014",
+        "2015",
+        "2016",
+        "2017",
+        "2018",
+        "2019",
+      ].map(function (str) {
+        return str.replace(" ", "\n");
+      }),
+    },
+  ],
+  yAxis: [
+    {
+      name: "进口量(万吨)",
+      type: "value",
+      max: 15000,
+      axisLine: {
+        lineStyle: {
+          color: "#c23531",
+        },
+      },
+    },
+    {
+      name: "出口量(万吨)",
+      nameLocation: "start",
+      max: 15000,
+      type: "value",
+      inverse: true,
+      axisLine: {
+        lineStyle: {
+          color: "#2f4554",
+        },
+      },
+    },
+  ],
+  series: [
+    {
+      name: "进口量",
+      type: "line",
+      hoverAnimation: true,
+      areaStyle: {
+        normal: {},
+      },
+      lineStyle: {
+        normal: {
+          width: 1,
+        },
+      },
+      data: [
+        6695, 6390, 8025, 8645, 10042, 12477, 11468, 13062, 11555, 11144, 
+        ],
+    },
+    {
+      name: "出口量",
+      type: "line",
+      yAxisIndex: 1,
+      hoverAnimation: true,
+      areaStyle: {
+        normal: {},
+      },
+      lineStyle: {
+        normal: {
+          width: 1,
+        },
+      },
+      data: [
+          275,288,277,243,211,164,190,280,366,434,
+      ],
+    },
+  ],
+};
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
+    </body>
+</html>

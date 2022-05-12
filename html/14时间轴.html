@@ -1,0 +1,312 @@
+﻿<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="../css/style.css"> <!-- Resource style -->
+	<script src="../js/modernizr.js"></script> <!-- Modernizr -->
+	<title>时间轴</title>
+	<style>
+        body{
+            background-image: url(../img/bg.png);
+        }
+        .left:hover{
+            cursor: pointer;
+			filter: brightness(50%);
+        }
+        .right:hover{
+            cursor: pointer;
+			filter: brightness(50%);
+        }
+		.mouse {
+			width: 25px;
+			height: 45px;
+			border: 1.5px solid white;
+			border-radius: 30px;
+			position: relative;
+			margin: 0 auto;
+			}
+			.mouse::before {
+			content: '';
+			width: 6px;
+			height: 6px;
+			position: absolute;
+			top: 10px;
+			left: 50%;
+			transform: translateX(-50%);
+			background-color: white;
+			border-radius: 50%;
+			opacity: 1;
+			animation: wheel 2s infinite;
+			-webkit-animation: wheel 2s infinite;
+			}
+
+			@keyframes wheel {
+			to {
+				opacity: 0;
+				top: 30px;
+			}
+			}
+    </style>
+</head>
+<body>
+
+	<section id="cd-timeline" class="cd-container">
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-picture">
+				<img src="../img/wenjian.png" alt="Picture">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>《全国农业可持续发展
+					规划（2015－2030年）》</h2>
+				<p>到2030年，农业可持续发展取得显著成效。供给保障有力、资源利用高效、产地环境良好、生态系统稳定、
+					农民生活富裕、田园风光优美的农业可持续发展新格局基本确立。</red>
+				</p>
+				<span class="cd-date">2015.05</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-movie">
+				<img src="../img/wenjian.png" alt="Movie">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>《粮食行业“十三五”
+					发展规划纲要》</h2>
+				<p>建立健全中央储备与地方储备、政府储备与社会储备协调机制。保持中央储备粮规模基本稳定，全面完成地
+					方储备增储任务。进一步优化储备粮布局和结构，合理确定成品粮储备规模。</p>
+				<span class="cd-date">2016.11</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-picture">
+				<img src="../img/wenjian.png" alt="Picture">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>《全国国土规划纲要
+					（2016－2030年）》</h2>
+				<p>大力建设粮食主产区。全面提高粮食主产区综合生产能力。以粮食主产区为核心，实施耕地质量保护与提升
+					行动，严守耕地红线，提高耕地质量，确保谷物基本自给、口粮绝对安全。优先支持粮食主产区农产品加工
+					产业发展，促进粮食就地转化，增强农业综合生产能力。</p>
+				<span class="cd-date">2017.01</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="../img/wenjian.png" alt="Location">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>《关于做好12325全国粮
+					食流通监管热线管理工
+					作的通知》</h2>
+				<p>各地区、各单位要提高政治站位，牢固树立以人民为中心的理念，从服务大局和保障国家粮食安全的高度认
+					识开通12325热线的重大意义，切实管好用好12325热线，注重实效，认真履行新时代赋予粮食流通监管工作
+					的新使命。</p>
+				<span class="cd-date">2018.03</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="../img/maoyizhan.png" alt="Location">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>中美贸易摩擦</h2>
+				<p>美对华发起第一轮关税：500亿
+					美元商品，加征25%的关税。<br>
+					中国反制：对美国500亿美元商品加征25%关税。<red style="color: red;">其中包括大豆。</red>
+				</p>
+				<span class="cd-date">2018.07</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-movie">
+				<img src="../img/wenjian.png" alt="Movie">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>《关于深入实施“优质
+					粮食工程”的意见》</h2>
+				<p>围绕延伸粮食产业链、提升价值链、打造供应链，培育壮大一批龙头骨干企业，促进粮食“产购储加销”体
+					系建设和—二三产融合发展。选树推广一批先进典型，在全国形成百个典型示范县、千个先进示范企业（合
+					作社）、万个样板店和一大批知名品牌的“百千万”典型引领示范格局</p>
+				<span class="cd-date">2019.06</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-picture">
+				<img src="../img/wenjian.png" alt="Picture">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>《关于在国土空间规划
+					中统筹划定落实三条控
+					制线的指导意见》</h2>
+				<p>按照保质保量要求划定永久基本农田。永久基本农田是为保障国家粮</red>
+				</p>
+				<span class="cd-date">2019.11</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-movie">
+				<img src="../img/wenjian.png" alt="Movie">
+			</div> <!-- cd-timeline-img -->
+
+			<div class="cd-timeline-content">
+				<h2>强降雨导致洪涝</h2>
+				<p>2020年7月，强降雨致湖北
+					全省231.47万人受灾 2人
+					因灾死亡，直接经济损失
+					24.87亿元。造成江西18.3
+					万人受灾，农作物受灾面
+					积12.9千公顷，绝收772公 顷，直接经济损失7978万 元。除此以外四川、云南
+					等多地都不同程度受灾。</p>
+				<span class="cd-date">2020.07</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-picture">
+				<img src="../img/wenjian.png" alt="Picture">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>《全国国土规划纲要
+					（2016－2030年）》</h2>
+				<p>大力建设粮食主产区。全面提高粮食主产区综合生产能力。以粮食主产区为核心，实施耕地质量保护与提升
+					行动，严守耕地红线，提高耕地质量，确保谷物基本自给、口粮绝对安全。优先支持粮食主产区农产品加工
+					产业发展，促进粮食就地转化，增强农业综合生产能力。</p>
+				<span class="cd-date">2017.01</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="../img/wenjian.png" alt="Location">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>农业农村部：秋粮丰收在望 中国粮食安全有保障</h2>
+				<p>农业农村部举行新闻发布会，介绍当前粮食市场运行和生产有关情况。会上，农业农村部市场和信息化司司长唐珂介绍，当前中国粮价稳中有涨，但后期价格将逐步趋稳。总体来看，粮食短期需求变化不会对粮价产生持续影响，粮食生产供给完全有保障。</p>
+				<span class="cd-date">2020.08</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="../img/wenjian.png" alt="Location">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>《中华人民共和国国民
+					经济和社会发展第十四
+					个五年规划和2035年远
+					景目标纲要》</h2>
+				<p>坚持最严格的耕地保护制度，强化耕地数量保护和质量提升，严守18亿亩耕地红线，遏制耕地“非农化”、
+					防止“非粮化”，规范耕地占补平衡，严禁占优补劣、占水田补旱地。以粮食生产功能区和重要农产品生产
+					保护区为重点，建设国家粮食安全产业带，实施高标准农田建设工程，建成10.75亿亩集中连片高标准农田。
+				</p>
+				<span class="cd-date">2020.11</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-movie">
+				<img src="../img/zaihai.png" alt="Movie">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>华南地区旱情</h2>
+				<p>2020年底以来，我国南方地
+					区降水明显偏少，降水量较
+					常年同期偏少2–5成，同
+					时，南方大部气温较常年偏
+					高。上半年干旱灾害累计造
+					成云南、广东等14省（区）
+					533.5万人受灾，121.4万人
+					因旱需生活救助，农作物受
+					灾面积431.3千公顷，直接
+					经济损失26.2亿元。</p>
+				<span class="cd-date">2020年底-2021年上半年</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="../img/wenjian.png" alt="Location">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>焦点访谈：水退人进、多管齐下，全年粮食丰收就靠他们了！</h2>
+				<p>农业生产要看天，但却不能只是靠天吃饭。这次南方降雨持续时间和降雨量都超过了1998年，但是农业受灾损失却大大降低，灾前未雨绸缪，提前做好准备，灾后及时恢复生产，抢种、补种，起到了很大作用。
+				</p>
+				<span class="cd-date">2020.08</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-movie">
+				<img src="../img/wenjian.png" alt="Movie">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>华中地区暴雨</h2>
+				<p>2021年7月，我国华中地区
+					遭受强降雨袭击，其中河
+					南受灾最为严重，此次灾
+					害造成农作物受灾面积
+					20178.47公顷，成灾面积
+					3193.42公顷，绝收面积
+					745.62公顷；严重损坏房
+					屋2户4间，一般损坏房屋
+					82户96间；直接经济损失
+					10460.47万元。</p>
+				<span class="cd-date">2021.07</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-location">
+				<img src="../img/wenjian.png" alt="Location">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>兵团第九师：多措并举稳粮保丰收 筑牢粮食安全“压舱石”</h2>
+				<p>阳春三月，时下正值春耕春播的季节，也是打好粮食安全第一仗的关键期。新疆生产建设兵团九师各团场各单位主动靠前指挥，逐级压实责任，将任务层层分解到团场、连队、地块，保证足额完成兵团下达的78万亩生产目标任务。 筑牢粮食安全“压舱石”
+				</p>
+				<span class="cd-date">2022.04</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+
+		<div class="cd-timeline-block">
+			<div class="cd-timeline-img cd-movie">
+				<img src="../img/wenjian.png" alt="Movie">
+			</div> <!-- cd-timeline-img -->
+			<div class="cd-timeline-content">
+				<h2>国际粮价上涨对我国影响几何？专家：小麦库存充足 市场价格稳定 </h2>
+				<p>“我国小麦完全能够自给，每年虽然也会少量进口一些小麦，但主要用于品种调剂，所以国际粮食价格波动对我国小麦市场影响有限。”孙恒表示，当前我国小麦库存处于历史高位，可以满足国内一年以上消费需求。</p>
+				<span class="cd-date">2022.04</span>
+			</div> <!-- cd-timeline-content -->
+		</div> <!-- cd-timeline-block -->
+	</section> <!-- cd-timeline -->
+	<div class="foot" style="width: 100%;color: white;font-size: 18px;line-height: 30px;margin-top: 40px;">
+		<p style="text-align: center;line-height: 30px;width: 1000px;margin: 0 auto;">民为国基，谷为民命。粮食事关国运民生，粮食安全是国家安全的重要基础。</p><br><br>
+		<p style="text-align: center;line-height: 30px;width: 1000px;margin: 0 auto;">粮食安全是世界和平与发展的重要保障，是构建人类命运共同体的重要基础，关系人类永续发展和前途命运。作为世界上最大的发展中国家和负责任大国，中国始终是维护世界粮食安全的积极力量。</p><br><br>
+		<p style="text-align: center;line-height: 30px;width: 1000px;margin: 0 auto;">凡益之道，与时偕行。进入新时代，中国人民更加关注食物的营养与健康，既要“吃得饱”，更要“吃得好”“吃得放心”。初心不忘，人民至上。</p><br><br>
+		<p style="text-align: center;line-height: 30px;width: 1000px;margin: 0 auto;">确保粮食安全，中国与世界命运休戚与共。</p><br><br>
+		<p style="text-align: center;line-height: 30px;width: 1000px;margin: 0 auto;">中国将继续遵循开放包容、平等互利、合作共赢的原则，努力构建粮食对外开放新格局，与世界各国一道，加强合作，共同发展，为维护世界粮食安全作出不懈努力，为推动构建人类命运共同体作出新的贡献。</p><br><br>
+		<p style="text-align: center;line-height: 30px;width: 1000px;margin: 0 auto;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;————《中国的粮食安全》白皮书</p><br>
+		<hr><br><br>
+		<p style="text-align: center;line-height: 30px;width: 1000px;margin: 0 auto;">平顶山学院 新闻与传播学院 2022届毕业生毕业设计</p>
+		<p style="text-align: center;line-height: 30px;width: 1000px;margin: 0 auto;">数读《天下粮仓应无恙,禾下乘凉稻花香》</p>
+		<p style="text-align: center;line-height: 30px;width: 1000px;margin: 0 auto;">Copyright©2022 All Rights Reserved.</p>
+		<p style="text-align: center;line-height: 30px;width: 1000px;margin: 0 auto;">制作人：杜靖龙&nbsp;&nbsp;&nbsp;&nbsp;指导老师：万鹏</p>
+		<p style="text-align: center;line-height: 30px;width: 1000px;margin: 0 auto;">资料来源：《世界粮食安全和营养状况》、《中国统计年鉴》、《世界统计年鉴》、《中国农村统计年鉴》</p><br>
+	</div>
+	<div style="width: 3%;position: fixed;top: 40%;left: 0;"><a href="./13图片.html"><img src="../img/left.png" class="left" style="width: 100%;"></a></div>
+	<div class="shubiao" style="position: fixed;bottom: 0;left: 5%;">
+		<div class="mouse" style="color: white;"></div>
+		<div class="" style="color: white;padding: 10px;">向下滚动</div>
+	  </div>
+<script src="../js/jquery.1.11.1.js"></script>
+<script src="../js/main.js"></script> <!-- Resource jQuery -->
+</body>
+</html>

@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>世界食物不足发生率</title>
+    <!-- 引入echatrs  -->
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+    <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/world.js"></script>
+    <style>
+        body{
+            background-image: url(../img/bg.png);
+        }
+        .left:hover{
+            cursor: pointer;
+            filter: brightness(50%);
+        }
+        .right:hover{
+            cursor: pointer;
+            filter: brightness(50%);
+        }
+        .wenzi{
+            display: block;
+            width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            margin-top: 420px;
+            border:solid 1px white;
+            border-radius: 15px;
+            background-color: rgba(185, 178, 178, 0.336);
+        }
+    </style>
+    <script>
+    </script>
+</head>
+<body>
+
+    <div class="main" style="width: 1200px;height: auto;margin: 0 auto;">
+        <div class="tittle"><h1 style="color: white;text-align: center;">全球粮食危机现状-现状仍然严峻</h1></div>
+        <!-- div标签表示一个块，它是我们的图片容器。所以属性style里 宽度和高度是可以自定义的，1800px代表1800像素，块的宽度和高度于生成图片的尺寸相关，在下面的饼状图中则同理。-->
+        <div id="container" class="chart-container" style="width:800px; height:400px;float: left;"></div>
+        <div class="beizhu" style="float: left;line-height: 30px;border:solid 1px white;border-radius: 15px;background-color: rgba(185, 178, 178, 0.336);width: 362px;margin-top: 70px;"><p style="color: rgba(255, 255, 255, 0.582);"><br>备注：<br>一：如人口覆盖率超过 50%，则提供区域估计值。为缩小误差范围，估计值为三年平均值。<br>
+            二：图中白色国家或地区食物不足发生率暂无数据<br>
+            三：图中绿色国家或地区食物不足发生率低于2.5%<br>
+            四：数据来源，《世界粮食安全和营养状况》<br></p>
+        </div>
+        <div style="width: 3%;position: fixed;top: 40%;left: 0;"><a href="../index.html"><img src="../img/left.png" class="left" style="width: 100%;"></a></div>
+        <div style="width: 3%;position: fixed;top: 40%;right: 0;"><a href="./2关系图.html"><img src="../img/right.png" class="right" style="width: 100%;"></a></div>
+    </div>
+    <div class="wenzi"><p style="float: left;color: white;line-height: 25px;">根据联合国调查显示，目前全球粮食危机现状依然较为严峻，55个国家和地区粮食危机达到“危机”级别，涉及人口达1.55亿人，其中非洲是粮食危机的主要发生区域。</p></div>
+    <script>
+        //  所有的脚本代码都写在script标签里
+        var chart_container = echarts.init(
+            document.getElementById('container'), 'white', {renderer: 'canvas'});
+        // var option代表定义一个名为option的变量，后面花括号里的代表我们需要作图的参数设置
+        var option_container = {
+    // 默认的颜色数组 （如果不明确设置每个数据项的颜色，则会采用默认的数组
+    // 此处的颜色为十六进制表示，也可以使用rgb来表示。简单地理解就是一串字符就代表一个颜色，挑选喜欢的颜色可以自行搜索颜色
+        "color": ["#ac6767","#1d953f","#6950a1","#918597"],
+        "series": [
+            {
+                // 图标类型为 地图
+                "type": "map",
+                "name": "食物不足发生率",
+                "label": {
+                    "show": false,
+                    "position": "top",
+                    "margin": 8
+                },
+                "mapType": "world",  // 地图类型为 世界地图
+                // data里的每一个{}中，是一项数据整体，标明了该项数据的名称，值，以及颜色等参数。注意：此处的字符串需要加双引号""(输入法切换至英文状态)
+                "data": [
+                    {
+                        // ItemStyle 中设置每一个数据项的颜色
+                        "name": "Algeria",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },
+                    {
+                        "name": "Egypt",
+                        "value": 5.4,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Libya",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },
+                    {
+                        "name": "Morocco",
+                        "value": 4.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Sudan",
+                        "value": 12.3,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "S. Sudan",
+                        "value": 12.3,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Tunisia",
+                        "value": 3.0,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Burundi",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },
+                    {
+                        "name": "Comoros",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },
+                    {
+                        "name": "Djibouti",
+                        "value": 16.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Eritrea",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },
+                    {
+                        "name": "Ethiopia",
+                        "value": 16.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Kenya",
+                        "value": 24.8,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Madagascar",
+                        "value": 43.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Malawi",
+                        "value": 17.3,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Mauritius",
+                        "value": 6.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Mozambique",
+                        "value": 31.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Rwanda",
+                        "value": 35.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Seychelles",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },
+                    {
+                        "name": "Somalia",
+                        "value": 59.5,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "South Sudan",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },
+                    {
+                        "name": "Uganda",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },
+                    {
+                        "name": "Tanzania",
+                        "value": 25.1,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Zambia",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },
+                    {
+                        "name": "Zimbabwe",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },
+                    {
+                        "name": "Angola",
+                        "value": 17.3,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Cameroon",
+                        "value": 5.3,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Central African Rep.",
+                        "value": 48.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Chad",
+                        "value": 31.7,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Congo",
+                        "value": 37.7,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Dem. Rep. Congo",
+                        "value": 41.7,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Equatorial Guinea",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },
+                    {
+                        "name": "Gabon",
+                        "value": 15.7,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Sao Tome and Principe",
+                        "value": 11.9,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Botswana",
+                        "value": 29.3,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Eswatini",
+                        "value": 11.6,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Lesotho",
+                        "value": 23.5,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Namibia",
+                        "value": 18.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "South Africa",
+                        "value": 6.5,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Benin",
+                        "value": 7.6,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Burkina Faso",
+                        "value": 14.4,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Cabo Verde",
+                        "value": 15.4,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Côte d'Ivoire",
+                        "value": 14.9,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Gambia",
+                        "value": 13.6,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Ghana",
+                        "value": 6.1,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Guinea",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },
+                    {
+                        "name": "Guinea-Bissau",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Liberia",
+                        "value": 38.9,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Mali",
+                        "value": 10.4,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Mauritania",
+                        "value": 9.1,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Niger",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Nigeria",
+                        "value": 14.6,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Senegal",
+                        "value": 7.5,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Sierra Leone",
+                        "value": 26.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Togo",
+                        "value": 20.4,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Kazakhstan",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Kyrgyzstan",
+                        "value": 7.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Tajikistan",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Turkmenistan",
+                        "value": 4.1,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Uzbekistan",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "China",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Dem. Rep. Korea",
+                        "value": 42.4,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Japan",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Mongolia",
+                        "value": 4.3,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Korea",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Brunei Darussalam",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Cambodia",
+                        "value": 6.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Indonesia",
+                        "value": 6.5,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Lao PDR",
+                        "value": 5.3,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Malaysia",
+                        "value": 3.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Myanmar",
+                        "value": 7.6,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Philippines",
+                        "value": 9.4,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Singapore",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Thailand",
+                        "value": 8.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Timor-Leste",
+                        "value": 22.6,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Vietnam",
+                        "value": 6.7,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Afghanistan",
+                        "value": 25.6,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Bangladesh",
+                        "value": 9.7,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Bhutan",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "India",
+                        "value": 15.3,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Iran",
+                        "value": 5.5,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Maldives",
+                        "value": 2.5,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Nepal",
+                        "value": 4.8,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Pakistan",
+                        "value": 12.9,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Sri Lanka",
+                        "value": 6.8,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Armenia",
+                        "value": 3.4,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Azerbaijan",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Bahrain",
+                        "value": 2.5,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Cyprus",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Georgia",
+                        "value": 8.7,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Iraq",
+                        "value": 37.5,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Israel",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Jordan",
+                        "value": 9.5,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Kuwait",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },
+                    {
+                        "name": "W. Sahara",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },
+                    {
+                        "name": "Lebanon",
+                        "value": 9.3,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Oman",
+                        "value": 8.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },
+                    {
+                        "name": "Palestine",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Qatar",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },
+                    {
+                        "name": "Saudi Arabia",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Syrian Arab Republic",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Turkey",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "United Arab Emirates",
+                        "value": 3.7,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Yemen",
+                        "value": 45.4,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Antigua and Barbuda",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Bahamas",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Barbados",
+                        "value": 4.1,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Cuba",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Dominica",
+                        "value": 5.6,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Dominican Rep.",
+                        "value": 8.3,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Grenada",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Haiti",
+                        "value": 46.8,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Jamaica",
+                        "value": 7.7,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Puerto Rico",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Saint Kitts and Nevis",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Saint Lucia",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Saint Vincent and the Grenadines",
+                        "value": 5.6,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Trinidad and Tobago",
+                        "value": 6.7,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Belize",
+                        "value": 5.9,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Costa Rica",
+                        "value": 3.1,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "El Salvador",
+                        "value": 8.5,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Guatemala",
+                        "value": 16.8,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Honduras",
+                        "value": 13.5,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Mexico",
+                        "value": 7.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Nicaragua",
+                        "value": 19.3,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Panama",
+                        "value": 7.5,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Argentina",
+                        "value": 3.9,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Bolivia",
+                        "value": 12.6,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    
+                    {
+                        "name": "Brazil",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },
+                    {
+                        "name": "Chile",
+                        "value": 3.4,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Colombia",
+                        "value": 8.8,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Ecuador",
+                        "value": 12.4,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Guyana",
+                        "value": 5.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Paraguay",
+                        "value": 9.2,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Peru",
+                        "value": 8.7,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Suriname",
+                        "value": 8.7,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Uruguay",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Venezuela",
+                        "value": 27.4,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Australia",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "New Zealand",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Fiji",
+                        "value": 5.6,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "New Caledonia",
+                        "value": 6.9,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Papua New Guinea",
+                        "value": 24.6,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Solomon Islands",
+                        "value": 16.5,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Vanuatu",
+                        "value": 9.3,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Kiribati",
+                        "value": 4.1,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Marshall Islands",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Micronesia (Federated States of)",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Nauru",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Palau",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "American Samoa",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Cook Islands",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "French Polynesia",
+                        "value": 3.8,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Niue",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Samoa",
+                        "value": 4.6,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Tokelau (Associate Member)",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Tonga",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Tuvalu",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Bermuda",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Canada",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Greenland",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "United States",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Belarus",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Bulgaria",
+                        "value": 3.0,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Czechia",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Hungary",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Poland",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Republic of Moldova",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Romania",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Russia",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Slovakia",
+                        "value": 4.0,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Ukraine",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Denmark",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Estonia",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Finland",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Iceland",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Ireland",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Latvia",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Lithuania",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Norway",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Sweden",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "United Kingdom",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Albania",
+                        "value": 3.9,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Andorra",
+                        "value": 0,
+                        'itemStyle':{'color':""}
+                    },                    {
+                        "name": "Bosnia and Herzegovina",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Croatia",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    
+                    {
+                        "name": "Greece",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },
+                    {
+                        "name": "Italy",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Malta",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Montenegro",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "North Macedonia",
+                        "value": 2.7,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Portugal",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Serbia",
+                        "value": 3.9,
+                        'itemStyle':{'color':"#F08080"}
+                    },                    {
+                        "name": "Slovenia",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Spain",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Austria",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Belgium",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "France",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Germany",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Luxembourg",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Netherlands",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },                    {
+                        "name": "Switzerland",
+                        "value": 2.5,
+                        'itemStyle':{'color':"#90EE90"}
+                    },
+                ],
+                "zoom": 1,
+                // 去除各个国家上的小红点
+                "showLegendSymbol": false,
+                "roam":false//禁止地图拖动和缩放
+            }
+        ],
+        // 鼠标悬浮，单击产生的效果（在网页上可以动态显示）
+        "tooltip": {
+            "show": true,
+            "zoomOnMouseWheel": false,
+            "trigger": "item",
+            "triggerOn": "mousemove|click",
+            "axisPointer": {
+                "type": "line"
+            },
+            "textStyle": {
+                "fontSize": 14
+            },
+            "borderWidth": 0
+        }
+};
+chart_container.setOption(option_container);
+    </script>
+</body>
+</html>

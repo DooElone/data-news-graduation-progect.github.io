@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <title>我国耕地质量</title>
+            <!-- 引入刚刚下载的 ECharts 文件 -->
+            <script src="../js/echarts.js"></script>
+            <style>
+                body{
+                    background-image: url(../img/bg.png);
+                }
+                .left:hover{
+                    cursor: pointer;
+                    filter: brightness(50%);
+                }
+                .right:hover{
+                    cursor: pointer;
+                    filter: brightness(50%);
+                }
+            </style>
+            </head>
+    <body>
+        <div class="zong" style="width: 1200px;">
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+            <div id="main" style="width: 800px;height:600px;margin: 0 auto;float: left;"></div>
+            <div class="wenzi" style="float: right;width: 380px;margin-top: 50px;"><p style="color: white;line-height: 25px;">
+                全国耕地质量等别调查与评定总面积为 13507.2 万公顷（202609 万亩）<br>
+                全国耕地评定为 15 个等别，1 等耕地质量最好，15 等最差。
+                其中以 7-13 等耕地为主，面积均大于 1000 万公顷，占全国耕地评定总面积的 78.5%.<br>
+                采用等别面积加权法，计算得到全国耕地平均质量等别为
+                9.96 等，等别总体偏低。<br>
+                与平均质量等别相比，高于平均质量等
+                别的 1-9 等地占全国耕地评定总面积的 39.8%，低于平均质量等
+                别的 10-15 等地占 60.2%。</p>
+            </div>
+            <div class="beizhu" style="float: right;width: 380px;border:solid 1px white;border-radius: 15px;background-color: rgba(185, 178, 178, 0.336)"><p style="color: white;">
+                备注：<br>
+                一：北京、天津、山西、内蒙古、广东、四川、陕西、甘肃、青
+                海、宁夏、新疆等 17 个省（区、市）采用的是 2010 年土地变更调查耕地面积数；<br>
+                二：河北、辽宁、上海、江苏、浙江、江西、山东、河南、重庆、贵州、云南、西藏等 13 个省（区、市）采用的是
+                2011 年土地变更调查耕地面积数；<br>
+                三：海南省采用的是 2009 年第二次全国土地调查耕地面积数。
+            </p></div>
+            <div style="width: 3%;position: fixed;top: 40%;left: 0;"><a href="./8从事农业劳动人口.html"><img src="../img/left.png" class="left" style="width: 100%;"></a></div>
+            <div style="width: 3%;position: fixed;top: 40%;right: 0;"><a href="./10气泡图.html"><img src="../img/right.png" class="right" style="width: 100%;"></a></div>
+        </div>
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'));
+            // 指定图表的配置项和数据
+            	//用到的数据
+                myChart.setOption({
+    title : {
+        text: '中国耕地质量',
+        left: 'center',
+        textStyle: {
+            color: 'white',
+            fontStyle: 'normal',
+            fontSize: 24
+        },
+        subtext: '数据来源：国土资源部'
+    },
+    tooltip: {
+        formatter: '{b}:<br />耕地面积： {c}万公顷'
+    },
+    series: [{
+        roam:false,
+        name: '耕地等级',
+        type: 'treemap',
+        visibleMin: 100,
+        itemStyle: {
+            normal: {
+                label: {
+                    show: true,
+                    formatter: "{b}"
+                },
+                borderWidth:2
+            },
+            emphasis: {
+                label: {
+                    show: true
+                }
+            }
+        },
+        label: {
+            normal: {
+                fontSize: 14
+            }
+        },
+        data: [ // 注意，最外层是一个数组，而非从某个根节点开始。
+            {
+                value: 13509.74,
+                children: [{
+                        value: 2386.5, // value字段的值，对应到面积大小。
+                        // 数组其他项可以用于额外的视觉映射，详情参见 series-treemp.levels。
+                        id: 'someid-1', // id 不是必须设置的。
+                        // 但是如果想使用 API 来改变某个节点，需要用 id 来定位。
+                        name: '低等地  17.7%', // 显示在矩形中的描述文字。
+                        children: [
+                            {   value: 1117.4,
+                                id: 'someid-31',
+                                name: '十三等地 8.3%',
+                            }, {
+                                value: 759.6,
+                                id: 'someid-32',
+                                name: '十四等地 5.6%',
+                            }, {
+                                value: 509.4,
+                                id: 'someid-33',
+                                name: '十五等地 3.8%',
+                            }, 
+                        ],
+                        label: { // 此节点特殊的 label 定义（如果需要的话）。
+                            // ...         // label的格式参见 series-treemap.label。
+                        },
+                        itemStyle: { // 此节点特殊的 itemStyle 定义（如果需要的话）。
+                            // ...         // label的格式参见 series-treemap.itemStyle。
+                        }
+                    }, {
+                        value: 7149.3,
+                        id: 'someid-2',
+                        name: '中等地  52.9%',
+                        children: [
+                            {   value: 1410.6,
+                                id: 'someid-31',
+                                name: '九等地 10.4%',
+                            }, {
+                                value: 1802.9,
+                                id: 'someid-32',
+                                name: '十等地 13.3%',
+                            }, {
+                                value: 2038.1,
+                                id: 'someid-33',
+                                name: '十一等地 15.1%',
+                            }, {
+                                value: 1897.7,
+                                id: 'someid-34',
+                                name: '十二等地 14.1%',
+                            },
+                        ],
+                    }, {
+                        value: 3586.2,
+                        id: 'someid-3',
+                        name: '高等地  26.5%',
+                        children: [
+                            {   value: 363.8,
+                                id: 'someid-31',
+                                name: '五等地 2.7%',
+                            }, {
+                                value: 888.4,
+                                id: 'someid-32',
+                                name: '六等地 6.6%',
+                            }, {
+                                value: 1134.5,
+                                id: 'someid-33',
+                                name: '七等地 8.4%',
+                            }, {
+                                value: 1199.5,
+                                id: 'someid-34',
+                                name: '八等地 8.9%',
+                            },
+                        ],
+                    }, {
+                        value: 385.2,
+                        id: 'someid-4',
+                        name: '优等地  2.9%',
+                        children: [
+                            {   value: 42.5,
+                                id: 'someid-31',
+                                name: '一等地 0.3%',
+                            }, {
+                                value:57.9,
+                                id: 'someid-32',
+                                name: '二等地 0.4%',
+                            }, {
+                                value: 113.4,
+                                id: 'someid-33',
+                                name: '三等地 0.8%',
+                            }, {
+                                value: 171.4,
+                                id: 'someid-34',
+                                name: '四等地 1.3',
+                            },
+                        ],
+                    }
+                ]
+            },
+        ],
+        leafDepth: 2,
+        color: ["#FFA54F", "#FF8040", "#FFD39B", "#FF4500"]
+        
+}]
+});
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <title>我国乡村人口年龄构成</title>
+            <!-- 引入刚刚下载的 ECharts 文件 -->
+            <script src="../js/echarts.js"></script>
+            <style>
+                body{
+                    background-image: url(../img/bg.png);
+                }
+                .left:hover{
+                    cursor: pointer;
+                    filter: brightness(50%);
+                }
+                .right:hover{
+                    cursor: pointer;
+                    filter: brightness(50%);
+                }
+            </style>
+        </head>
+    <body>
+    <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+    <div class="zong" style="width: 1200px;margin: 0 auto;"></div>
+        <div id="main" style="width: 1200px;height:600px;margin: 0 auto;"></div>
+        <div style="width: 3%;position: fixed;top: 40%;left: 0;"><a href="./6雷达图.html"><img src="../img/left.png" class="left" style="width: 100%;"></a></div>
+        <div style="width: 3%;position: fixed;top: 40%;right: 0;"><a href="./8从事农业劳动人口.html"><img src="../img/right.png" class="right" style="width: 100%;"></a></div>
+    </div>
+        <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'));
+            // 指定图表的配置项和数据
+            	//用到的数据
+                let dashedPic = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAM8AAAAOBAMAAAB6G1V9AAAAD1BMVEX////Kysrk5OTj4+TJycoJ0iFPAAAAG0lEQVQ4y2MYBaNgGAMTQQVFOiABhlEwCugOAMqzCykGOeENAAAAAElFTkSuQmCC';
+let color = ['#d73027', '#f46d43', '#fdae61', '#fee090', '#ffffbf', '#e0f3f8', '#abd9e9', '#74add1', '#4575b4'];
+let chartData = [{
+        name: "小于20岁",
+        value: 1136748,
+    },
+    {
+        name: "20-29岁",
+        value: 48849826,
+    }, {
+        name: "30-39岁",
+        value: 62946975,
+    }, {
+        name: "40-49岁",
+        value: 68913524,
+    }, 
+    {
+        name: "50-59岁",
+        value: 89984195,
+    }, 
+    {
+        name: "大于60岁",
+        value: 121356294,
+    }, 
+];
+let arrName = [];
+let arrValue = [];
+let sum = 0;
+let pieSeries = [],
+    lineYAxis = [];
+
+// 数据处理
+chartData.forEach((v, i) => {
+    arrName.push(v.name);
+    arrValue.push(v.value);
+    sum = sum + v.value;
+})
+
+// 图表option整理
+chartData.forEach((v, i) => {
+    pieSeries.push({
+        name: '',
+        type: 'pie',
+        clockWise: false,
+        hoverAnimation: true,
+        radius: [80 - i * 7 + '%', 75 - i * 7 + '%'],
+        center: ["30%", "45%"],
+        label: {
+            show: false
+        },
+        data: [{
+            value: v.value,
+            name: v.name
+        }, {
+            value: sum - v.value,
+            name: '',
+            itemStyle: {
+                color: "rgba(0,0,0,0)"
+            },
+            tooltip: {
+                show: false
+            }
+        }]
+    });
+    pieSeries.push({
+        name: '',
+        type: 'pie',
+        silent: true,
+        z: 1,
+        clockWise: false, //顺时加载
+        hoverAnimation: false, //鼠标移入变大
+        radius: [79 - i * 7 + '%', 76 - i * 7 + '%'],
+        center: ["30%", "45%"],
+        label: {
+            show: false
+        },
+        data: [{
+            value: 2.5,
+            itemStyle: {
+                color: 'rgba(0,0,0,0.1)'
+            },
+            tooltip: {
+                show: false
+            }
+        }, {
+            value: 2.5,
+            name: '',
+            itemStyle: {
+                color: "rgba(0,0,0,0)"
+            },
+            tooltip: {
+                show: false
+            },
+        }]
+    });
+
+    v.percent = (v.value / sum * 100).toFixed(1) + "%";
+    lineYAxis.push({
+        value: i,
+        textStyle: {
+            rich: {
+                circle: {
+                    color: color[i],
+                    padding: [0, 5]
+                }
+            }
+        }
+    });
+})
+
+
+option = {
+    title: [{
+        text: '乡村人口年龄构成',
+        subtext: '数据来源：中国统计年鉴',
+        textAlign: "center",
+        left: "45%",
+        bottom: '3%',
+        textStyle: {
+            color: '#fff',
+            fontSize: 25,
+        },
+        subtextStyle: {
+            fontSize: 15,
+        }
+    }, {
+        text: '农业劳动力老龄化的影响',
+        subtext: '\n\n农业劳动力老龄化的产生和变迁,给农业及农村发展所带来的影响无疑是广泛而深刻的,\n\n它对文化、技术、管理以及农业剩余劳动力转移等方面都已造成不同程度的影响。\n\n不仅如此,它同时也影响着农村广大老龄劳动力的生存、发展并因此而最终反过来对农业、\n\n农村乃至整个社会产生直接影响。农业劳动力老龄化对农业及劳动力自身所带来的影响\n\n是更多的表现在负面还是正面上,从改革与发展的层面看，对这一问题的准确认识具有深远意义。',
+        //textAlign: "center",
+        left: "35%",
+        bottom: '20%',
+        backgroundColor: 'rgba(0,0,0,0.1)',
+        borderRadius: 10,
+        padding: 18,
+        textStyle: {
+            color: '#fff',
+            fontSize: 20,
+        },
+        subtextStyle: {
+            fontSize: 15,
+            
+        }
+    }],
+    tooltip: {
+        show: true,
+        trigger: "item",
+        formatter: "{b}<br>{c}人 ({d}%)",
+        fontSize: 18
+    },
+    color: color,
+    grid: {
+        top: '4.5%',
+        bottom: '64%',
+        left: "35%",
+        containLabel: true
+    },
+    yAxis: [{
+        type: 'category',
+        inverse: true,
+        axisLine: {
+            show: false
+        },
+        axisTick: {
+            show: false
+        },
+        axisLabel: {
+            formatter: function(params) {
+                let item = chartData[params];
+                console.log(item)
+                return '{line|}{circle|●}{name|' + ' ' + item.name + ' ' + '}{bd||}{percent|' + ' ' + item.percent + ' ' + '}{value|' + item.value + '}'
+            },
+            interval: 0,
+            inside: true,
+            textStyle: {
+                color: "#333",
+                fontSize: 14,
+                rich: {
+                    line: {
+                        width: 200,
+                        height: 3,
+                        backgroundColor: {
+                            image: dashedPic
+                        }
+                    },
+                    name: {
+                        color: 'white',
+                        fontSize: 16,
+                    },
+                    bd: {
+                        color: 'white',
+                        padding: [0, 5],
+                        fontSize: 15,
+                    },
+                    percent: {
+                        color: 'white',
+                        fontSize: 16,
+                    },
+                    value: {
+                        color: 'white',
+                        fontSize: 16,
+                        fontWeight: 500,
+                        padding: [0, 0, 0, 20]
+                    },
+                }
+            },
+            show: true
+        },
+        data: lineYAxis
+    }],
+    xAxis: [{
+        show: false
+    }],
+    series: pieSeries
+};
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        </script>
+    </body>
+</html>
